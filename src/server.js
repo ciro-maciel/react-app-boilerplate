@@ -1,7 +1,3 @@
-// https://reacttraining.com/react-router/web/guides/server-rendering
-// https://www.youtube.com/watch?v=82tZAPMHfT4
-// https://github.com/nfl/react-helmet
-// https://github.com/expressjs/compression
 import express from 'express';
 var compression = require('compression');
 import fs from 'fs';
