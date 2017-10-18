@@ -1,7 +1,7 @@
 {
-    "name": "@ciro-maciel/react-boilerplate",
+    "name": "@ciro-maciel/react-app-boilerplate",
     "version": "0.0.1",
-    "description": "My version of React Boilerplate",
+    "description": "My version of React Application Boilerplate",
     "homepage": "",
     "license": "CC-BY-NC-SA-4.0",
     "private": false,
@@ -23,14 +23,14 @@
         "react-dom": "^16.0.0",
         "react-helmet": "^5.2.0",
         "react-intl": "^2.4.0",
-        "react-jss": "^7.2.0",
         "react-redux": "^5.0.6",
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2",
         "redux": "^3.7.2",
         "redux-form": "^7.0.4",
         "redux-observable": "^0.16.0",
-        "rxjs": "^5.4.3"
+        "rxjs": "^5.4.3",
+        "styled-components": "^2.2.1"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",

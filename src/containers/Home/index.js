@@ -27,11 +27,8 @@ class Home extends Component {
                         Half width
                     </Box>
                     <Box width={[ 1, 9/12 ]} p={[1, 2]}>
-                        <Button type="success">
-                            Success
-                        </Button>
                         <Button>
-                            Default
+                            hi!
                         </Button>
                     </Box>
                 </Flex>
