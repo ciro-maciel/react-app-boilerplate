@@ -12,7 +12,7 @@
     "scripts": {
         "install": "yarn",
         "docs": "rimraf docs && cpx \"public/**/*\" docs/",
-        "build": "webpack --env.production --config ./scripts/webpack.production.js && ",
+        "build": "webpack --env.production --config ./scripts/webpack.production.js && npm run docs",
         "dev:client": "webpack-dev-server --config ./scripts/webpack.development.js",
         "dev:server": "nodemon --exec babel-node ./src/server.js"
     },

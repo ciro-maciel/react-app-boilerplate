@@ -27,7 +27,7 @@ injectGlobal`
 
 const Main = () => (
 	<Provider store={store}>
-		<Routes store={store}/>
+		<Routes />
 	</Provider>
 )
 
