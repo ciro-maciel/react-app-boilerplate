@@ -14,4 +14,6 @@ My version of React/Preact Application Boilerplate with SSR + PWA + i18n(interna
 - https://github.com/jxnblk/react-x-ray
 
 ### Util
-- https://www.npmjs.com/package/cpy-cli
+- https://www.npmjs.com/package/gh-pages
+- https://www.npmjs.com/package/cpx
+- https://www.npmjs.com/package/rimraf
