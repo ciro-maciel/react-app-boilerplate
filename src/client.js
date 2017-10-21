@@ -5,11 +5,10 @@ import { BrowserRouter, HashRouter } from 'react-router-dom';
 
 import Main from './main';
 
-console.log(process.env.PUBLIC_URL);
-
 // https://github.com/facebookincubator/create-react-app/issues/1765
+// Zhttps://reacttraining.com/react-router/web/api/HashRouter
 render(
-	<BrowserRouter basename={process.env.PUBLIC_URL}>
+	<HashRouter basename={process.env.PUBLIC_URL}>
 		<Main />
-	</BrowserRouter>,
+	</HashRouter>,
 	document.getElementById('container'));
