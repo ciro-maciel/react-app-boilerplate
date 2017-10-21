@@ -4,10 +4,7 @@ const path = require('path'),
     ContextReplacementPlugin = require('webpack').ContextReplacementPlugin;
 
 module.exports = {
-    // entry: './src/index.js',
-    entry: {
-        'main': "./src/client.js"
-    },
+    entry: './src/client.js',
     output: {
         path: path.resolve(__dirname, '../public', 'assets/js'),
         filename: '[name].js',
@@ -15,20 +12,10 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader",
-                options: {
-                    babelrc: false,
-                    presets: [
-                        ["env", {
-                            modules: false
-                        }], 'stage-2', "react"
-                    ],
-                    plugins: ['syntax-dynamic-import']
-                }
-            }
-        ]
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: "babel-loader"
+        }]
     },
     plugins: [
         new HtmlWebpackPlugin({

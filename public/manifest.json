@@ -1,33 +1,33 @@
 {
-    "short_name": "C37 Account",
-    "name": "Account of C37",
+    "short_name": "@ciro-maciel/react-app-boilerplate",
+    "name": "My version of React/Preact Application Boilerplate",
     "icons": [{
-            "src": "launcher-icon-1x.png",
+            "src": "/assets/img/icon-48x48.png",
             "type": "image/png",
             "sizes": "48x48"
         },
         {
-            "src": "launcher-icon-2x.png",
+            "src": "/assets/img/icon-96x96.png",
             "type": "image/png",
             "sizes": "96x96"
         },
         {
-            "src": "/assets/img/logo.svg",
-            "type": "image/svg",
+            "src": "/assets/img/icon-192x192.png",
+            "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/images/icon-256x256.png",
+            "src": "/assets/img/icon-256x256.png",
             "sizes": "256x256",
             "type": "image/png"
         },
         {
-            "src": "/images/icon-384x384.png",
+            "src": "/assets/img/icon-384x384.png",
             "sizes": "384x384",
             "type": "image/png"
         },
         {
-            "src": "/images/icon-512x512.png",
+            "src": "/assets/img/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }

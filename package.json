@@ -1,7 +1,7 @@
 {
     "name": "@ciro-maciel/react-app-boilerplate",
-    "version": "0.0.1",
-    "description": "My version of React Application Boilerplate",
+    "version": "1.0.0",
+    "description": "My version of React/Preact Application Boilerplate",
     "homepage": "",
     "license": "CC-BY-NC-SA-4.0",
     "private": false,
@@ -10,10 +10,10 @@
         "email": "ciro.maciel@c37.co"
     },
     "scripts": {
-        "start": "webpack-dev-server --config ./scripts/webpack.development.js",
-        "build": "webpack --env.production --config ./scripts/webpack.production.js",
         "install": "yarn",
-        "startdev": "nodemon --exec babel-node ./src/server.js"
+        "build": "webpack --env.production --config ./scripts/webpack.production.js",
+        "dev:client": "webpack-dev-server --config ./scripts/webpack.development.js",
+        "dev:server": "nodemon --exec babel-node ./src/server.js"
     },
     "dependencies": {
         "compression": "^1.7.1",
