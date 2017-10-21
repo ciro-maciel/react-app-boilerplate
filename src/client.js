@@ -5,6 +5,8 @@ import { BrowserRouter, HashRouter } from 'react-router-dom';
 
 import Main from './main';
 
+console.log(process.env.PUBLIC_URL);
+
 // https://github.com/facebookincubator/create-react-app/issues/1765
 render(
 	<BrowserRouter basename={process.env.PUBLIC_URL}>
