@@ -95,11 +95,11 @@ module.exports = merge(common, {
             filename: '../../worker.js',
             minify: true,
             staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,json,ttf,woff,ico}'],
-            replacePrefix: 'react-app-boilerplate',
+            // replacePrefix: 'react-app-boilerplate',
             stripPrefix: rootDir,
-            // stripPrefixMulti: {
-            //     'public': 'react-app-boilerplate'
-            // },
+            stripPrefixMulti: {
+                'public': 'react-app-boilerplate'
+            },
             // stripPrefix: rootDir,
             // navigateFallback: PUBLIC_URL
         })
