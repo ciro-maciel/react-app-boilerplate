@@ -92,15 +92,10 @@ module.exports = merge(common, {
         new swPrecacheWebpackPlugin({
             cacheId: '@ciro-maciel/react-app-boilerplate',
             filename: '../../worker.js',
-            // minify: true,
+            minify: true,
             staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,json,ttf,woff,ico}'],
-            stripPrefix: rootDir + '/',
-
-            // stripPrefixMulti: {
-            //     'public/': 'react-app-boilerplate/'
-            // },
-            // navigateFallback: PUBLIC_URL,
-            verbose: true
+            // https://github.com/GoogleChromeLabs/sw-precache/issues/163
+            stripPrefix: rootDir + '/'
         })
     ]
 });
