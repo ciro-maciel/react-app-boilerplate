@@ -42,9 +42,21 @@ app.get('*', function(req, res) {
 				${helmet.meta.toString()}
 				${helmet.link.toString()}
 				<style>${styleTags}</style>
-				<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+				<link rel="icon" type="image/ico" href="/assets/img/favicon.ico">
 				<link rel="manifest" href="/manifest.json">
-				<script type="text/javascript" charset="utf-8">${manifestJs}</script>				
+				<script type="text/javascript" charset="utf-8">${manifestJs}</script>
+				<script>
+					if ('serviceWorker' in navigator) {
+						window.addEventListener('load', function () {
+							// in directory /
+							navigator.serviceWorker.register('worker.js').then(function (registration) {
+								console.log('ServiceWorker registration successful with scope: ', registration.scope);
+							}).catch(function (err) {
+								console.log('ServiceWorker registration failed: ', err);
+							});
+						});
+					}
+				</script>
 			</head>
 			<body ${helmet.bodyAttributes.toString()}>
 				<div id="container">${renderHtml}</div>

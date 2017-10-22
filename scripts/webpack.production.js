@@ -4,10 +4,12 @@ const path = require('path'),
     DefinePlugin = require('webpack').DefinePlugin,
     UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
     CompressionPlugin = require('compression-webpack-plugin'),
+    swPrecacheWebpackPlugin = require('sw-precache-webpack-plugin'),
     BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const common = require('./webpack.common.js');
-
+const common = require('./webpack.common.js'),
+    rootDir = 'public',
+    PUBLIC_URL = 'https://ciro-maciel.github.io/react-app-boilerplate/';
 
 module.exports = merge(common, {
     plugins: [
@@ -82,6 +84,20 @@ module.exports = merge(common, {
             analyzerMode: 'static',
             openAnalyzer: false,
             reportFilename: '../../analysis.html',
+        }),
+        // https://github.com/goldhand/sw-precache-webpack-plugin
+        // https://github.com/GoogleChromeLabs/sw-precache#options-parameter
+        // https://github.com/GoogleChrome/sw-precache/issues/156
+        // https://github.com/GoogleChrome/sw-precache
+        new swPrecacheWebpackPlugin({
+            cacheId: '@ciro-maciel/react-app-boilerplate',
+            // dontCacheBustUrlsMatching: /\.\w{8}\./,
+            filename: '../../worker.js',
+            minify: true,
+            staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,json,ttf,woff,ico}'],
+            stripPrefix: rootDir,
+            navigateFallback: PUBLIC_URL + 'index.html',
+            staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
         })
     ]
 });
