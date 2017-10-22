@@ -94,8 +94,9 @@ module.exports = merge(common, {
             cacheId: '@ciro-maciel/react-app-boilerplate',
             filename: '../../worker.js',
             minify: true,
+            directoryIndex: '/',
             staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,json,ttf,woff,ico}'],
-            // stripPrefix: PUBLIC_PATH,
+            stripPrefix: rootDir,
             // navigateFallback: PUBLIC_URL + 'index.html',
             navigateFallback: PUBLIC_URL
         })
