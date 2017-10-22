@@ -9,6 +9,7 @@ const path = require('path'),
 
 const common = require('./webpack.common.js'),
     rootDir = 'public',
+    // PUBLIC_PATH = '/react-app-boilerplate/',
     PUBLIC_URL = 'https://ciro-maciel.github.io/react-app-boilerplate/';
 
 module.exports = merge(common, {
@@ -91,13 +92,12 @@ module.exports = merge(common, {
         // https://github.com/GoogleChrome/sw-precache
         new swPrecacheWebpackPlugin({
             cacheId: '@ciro-maciel/react-app-boilerplate',
-            // dontCacheBustUrlsMatching: /\.\w{8}\./,
             filename: '../../worker.js',
             minify: true,
             staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,json,ttf,woff,ico}'],
-            stripPrefix: rootDir,
-            navigateFallback: PUBLIC_URL + 'index.html',
-            staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
+            // stripPrefix: PUBLIC_PATH,
+            // navigateFallback: PUBLIC_URL + 'index.html',
+            navigateFallback: PUBLIC_URL
         })
     ]
 });
