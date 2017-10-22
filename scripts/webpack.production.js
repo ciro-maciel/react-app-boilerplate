@@ -97,7 +97,7 @@ module.exports = merge(common, {
             // replacePrefix: 'react-app-boilerplate',
             stripPrefix: rootDir,
             stripPrefixMulti: {
-                'public': 'react-app-boilerplate'
+                'public/': 'react-app-boilerplate/'
             },
             navigateFallback: PUBLIC_URL
         })
