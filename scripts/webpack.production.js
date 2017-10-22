@@ -9,8 +9,7 @@ const path = require('path'),
 
 const common = require('./webpack.common.js'),
     rootDir = 'public',
-    // PUBLIC_PATH = '/react-app-boilerplate/',
-    PUBLIC_URL = 'https://ciro-maciel.github.io/react-app-boilerplate/';
+    PUBLIC_URL = 'https://ciro-maciel.github.io/';
 
 module.exports = merge(common, {
     plugins: [
@@ -100,8 +99,7 @@ module.exports = merge(common, {
             stripPrefixMulti: {
                 'public': 'react-app-boilerplate'
             },
-            // stripPrefix: rootDir,
-            // navigateFallback: PUBLIC_URL
+            navigateFallback: PUBLIC_URL
         })
     ]
 });
