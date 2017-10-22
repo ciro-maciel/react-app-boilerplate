@@ -101,7 +101,7 @@ module.exports = merge(common, {
             //     'public': 'react-app-boilerplate'
             // },
             // stripPrefix: rootDir,
-            navigateFallback: PUBLIC_URL
+            // navigateFallback: PUBLIC_URL
         })
     ]
 });
