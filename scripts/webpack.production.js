@@ -96,7 +96,7 @@ module.exports = merge(common, {
             minify: true,
             staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,json,ttf,woff,ico}'],
             stripPrefixMulti: {
-                'public': 'react-app-boilerplate'
+                'public': ''
             },
             // stripPrefix: rootDir,
             // navigateFallback: PUBLIC_URL
