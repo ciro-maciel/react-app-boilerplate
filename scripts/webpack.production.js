@@ -92,14 +92,15 @@ module.exports = merge(common, {
         new swPrecacheWebpackPlugin({
             cacheId: '@ciro-maciel/react-app-boilerplate',
             filename: '../../worker.js',
-            minify: true,
+            // minify: true,
             staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,json,ttf,woff,ico}'],
-            // replacePrefix: 'react-app-boilerplate',
-            stripPrefix: rootDir,
-            stripPrefixMulti: {
-                'public/': 'react-app-boilerplate/'
-            },
-            navigateFallback: PUBLIC_URL
+            stripPrefix: rootDir + '/',
+
+            // stripPrefixMulti: {
+            //     'public/': 'react-app-boilerplate/'
+            // },
+            // navigateFallback: PUBLIC_URL,
+            verbose: true
         })
     ]
 });
