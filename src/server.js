@@ -46,15 +46,17 @@ app.get('*', function(req, res) {
 				<link rel="manifest" href="/manifest.json">
 				<script type="text/javascript" charset="utf-8">${manifestJs}</script>
 				<script>
-					if ('serviceWorker' in navigator) {
-						window.addEventListener('load', function () {
-							// in directory /
-							navigator.serviceWorker.register('worker.js').then(function (registration) {
-								console.log('ServiceWorker registration successful with scope: ', registration.scope);
-							}).catch(function (err) {
-								console.log('ServiceWorker registration failed: ', err);
+					if (process.env.NODE_ENV === "production") {
+						if ('serviceWorker' in navigator) {
+							window.addEventListener('load', function () {
+								// in directory /
+								navigator.serviceWorker.register('worker.js').then(function (registration) {
+									console.log('ServiceWorker registration successful with scope: ', registration.scope);
+								}).catch(function (err) {
+									console.log('ServiceWorker registration failed: ', err);
+								});
 							});
-						});
+						}
 					}
 				</script>
 			</head>
