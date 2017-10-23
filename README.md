@@ -1,5 +1,13 @@
 ## react-boilerplate
-My version of React/Preact Application Boilerplate with SSR + PWA + i18n(internationalization)
+My version of React/Preact Application Boilerplate with:
+- i18n (internationalization)
+- Environment Variables 
+- Server Side Rendering
+- Progressive Web Apps
+- Responsive 
+- Testable 
+- Async Actions (redux-observable - rxJS)
+- Dynamic CSS (styled-components)
 
 ### SSR
 - https://github.com/nfl/react-helmet
