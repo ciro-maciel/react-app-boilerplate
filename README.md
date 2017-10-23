@@ -13,6 +13,9 @@ My version of React/Preact Application Boilerplate with SSR + PWA + i18n(interna
 - https://github.com/jxnblk/grid-styled
 - https://github.com/jxnblk/react-x-ray
 
+### Test
+- http://facebook.github.io/jest/
+
 ### Util
 - https://www.npmjs.com/package/gh-pages
 - https://www.npmjs.com/package/cpx

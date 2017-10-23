@@ -21,7 +21,7 @@ class Home extends Component {
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>@ciro-maciel/My version of React/Preact Application Boilerplate</title>
-                    <link rel="canonical" href="http://mysite.com/example" />
+                    <link rel="canonical" href="https://ciro-maciel.github.io/react-app-boilerplate/" />
                 </Helmet>
                 <Flex wrap width={1024}>
                     <Box width={[ 1, 3/12 ]} p={[1, 2]}>

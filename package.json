@@ -11,6 +11,7 @@
     },
     "scripts": {
         "install": "yarn",
+        "test": "jest",
         "docs": "rimraf docs && cpx \"public/**/*\" docs/",
         "build": "webpack --env.production --config ./scripts/webpack.production.js && npm run docs",
         "dev:client": "webpack-dev-server --config ./scripts/webpack.development.js",
@@ -28,7 +29,6 @@
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2",
         "redux": "^3.7.2",
-        "redux-form": "^7.0.4",
         "redux-observable": "^0.16.0",
         "rxjs": "^5.4.3",
         "styled-components": "^2.2.1"
@@ -44,10 +44,10 @@
         "cpx": "^1.5.0",
         "dotenv-webpack": "^1.5.4",
         "html-webpack-plugin": "^2.29.0",
+        "jest": "^21.2.1",
         "nodemon": "^1.12.1",
         "redux-logger": "^3.0.6",
         "rimraf": "^2.6.2",
-        "style-loader": "^0.18.2",
         "sw-precache-webpack-plugin": "^0.11.4",
         "uglifyjs-webpack-plugin": "^0.4.6",
         "webpack": "^3.5.6",

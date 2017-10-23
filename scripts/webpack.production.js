@@ -8,8 +8,7 @@ const path = require('path'),
     BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const common = require('./webpack.common.js'),
-    rootDir = 'public',
-    PUBLIC_URL = 'https://ciro-maciel.github.io/';
+    rootDir = 'public';
 
 module.exports = merge(common, {
     plugins: [
