@@ -1,18 +1,12 @@
 ## React/Preact - Boilerplate
 My version of React/Preact Application Boilerplate with:
 
-- Structured for Team Development
-- Supports ES6
-- State Container (redux)
-- i18n (internationalization)
-- Environment Variables 
-- Server Side Rendering
-- Progressive Web Apps
-- Responsive 
-- Testable 
-- URL Router 
-- Async Actions (rxJS)
-- Dynamic CSS (styled-components)
+|                                 |                             |                       |
+|---------------------------------|-----------------------------|-----------------------|
+| Structured for Team Development | i18n (internationalization) | Progressive Web Apps  |
+| SupportsES6                     | Environment Variables       | Responsive Web Design |
+| State Container (redux)         | Server Side Rendering       | Testable              |
+| URL Router                      | Async Actions               | Dynamic CSS           |
 
 
 ## Quick Overview
@@ -51,6 +45,7 @@ npm run dev:client
   - [Splitting](#splitting)
   - [Analysis](#analysis)
 - [Sending Feedback](#sending-feedback)
+- [License](#license)
 
 
 ## Introduction
@@ -92,20 +87,55 @@ npm run dev:client
 After creation, your project should look like this:
 
 ```
-my-app/
-  README.md
-  node_modules/
-  package.json
-  public/
-    index.html
-    favicon.ico
-  src/
-    App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
+my-app
+├── docs
+├── node_modules
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── assets
+│       ├── img
+│       │   └── favicon.ico
+│       └── js
+|           └── *.*
+├── scripts
+│   ├── .env.development
+│   ├── .env.production
+│   ├── webpack.common.js
+│   ├── webpack.development.js
+│   └── webpack.production.js
+├── src
+│   ├── Components
+│   │   └── menu.js
+│   ├── Containers
+│   │   ├── Home
+|   |   |   ├──
+|   |   |   ├──
+|   |   |   └──
+│   │   └── i18n
+|   |   |   ├──
+|   |   |   ├──
+|   |   |   └──
+│   ├── i18n
+│   │   ├── en-US.js
+│   │   └── pt-BR.js
+│   ├── structure
+│   │   ├── api.js
+│   │   ├── epics.js
+│   │   ├── reducers.js
+│   │   ├── routes.js
+│   │   └── store.js
+│   ├── client.js
+│   ├── index.html
+│   ├── main.js
+│   └── server.js
+├── .babelrc
+├── .gitignore
+├── LICENSE
+├── package.json
+├── README.md
+└── yarn.lock
+    
 ```
 
 ## Available Scripts
@@ -129,3 +159,7 @@ my-app/
 
 
 ## Sending Feedback
+
+
+## License
+CC-BY-NC-SA-4.0 - Attribution-NonCommercial-ShareAlike 4.0 International
