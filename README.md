@@ -1,13 +1,12 @@
 ## React/Preact - Boilerplate
 My version of React/Preact Application Boilerplate with:
 
-|                                 |                             |                       |
+| []()                            | []()                        | []()                  |
 |---------------------------------|-----------------------------|-----------------------|
 | Structured for Team Development | i18n (internationalization) | Progressive Web Apps  |
 | SupportsES6                     | Environment Variables       | Responsive Web Design |
 | State Container (redux)         | Server Side Rendering       | Testable              |
 | URL Router                      | Async Actions               | Dynamic CSS           |
-
 
 ## Quick Overview
 ```sh
