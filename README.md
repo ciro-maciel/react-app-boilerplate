@@ -6,6 +6,7 @@ My version of React/Preact Application Boilerplate with:
 - Progressive Web Apps
 - Responsive 
 - Testable 
+- URL Router 
 - Async Actions (redux-observable - rxJS)
 - Dynamic CSS (styled-components)
 
