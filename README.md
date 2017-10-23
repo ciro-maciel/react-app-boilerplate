@@ -1,5 +1,6 @@
-## react-boilerplate
+## React/Preact - Boilerplate
 My version of React/Preact Application Boilerplate with:
+- Supports ES6
 - i18n (internationalization)
 - Environment Variables 
 - Server Side Rendering
@@ -9,6 +10,34 @@ My version of React/Preact Application Boilerplate with:
 - URL Router 
 - Async Actions (redux-observable - rxJS)
 - Dynamic CSS (styled-components)
+
+
+## Table of Contents
+- [Sending Feedback](#sending-feedback)
+- [Folder Structure](#folder-structure)
+- [Scripts](#scripts)
+
+
+### Folder Structure
+After creation, your project should look like this:
+
+```
+my-app/
+  README.md
+  node_modules/
+  package.json
+  public/
+    index.html
+    favicon.ico
+  src/
+    App.css
+    App.js
+    App.test.js
+    index.css
+    index.js
+    logo.svg
+```
+
 
 ### SSR
 - https://github.com/nfl/react-helmet
