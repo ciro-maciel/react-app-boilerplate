@@ -3,8 +3,11 @@ import { Switch, Route } from 'react-router';
 import { Link } from 'react-router-dom';
 import XRay from 'react-x-ray'
 
+import { Flex, Box } from 'grid-styled';
+
 import { I18nProvider } from '../containers/i18n';
 import Home from '../containers/Home';
+import Users from '../containers/Users';
 
 
 // https://reacttraining.com/react-router/web/guides/server-rendering/404-401-or-any-other-status
@@ -18,19 +21,24 @@ const Status = ({ code, children }) => (
 
 const NotFound = () => (
     <Status code={404}>
-		<div>
-			<h1>Sorry, can’t find that.</h1>
-			<p>go to <Link to={"/"}>Home</Link></p>
-		</div>
+        <Flex justify='center' style={{ height: '100%' }}>
+            <Flex wrap width={1024}>
+                <Box width={1} style={{ textAlign:'center'}}>
+                    <h1>Sorry, can’t find that.</h1>
+                    <p>Go to <Link to={"/"}>Home</Link></p>
+                </Box>
+            </Flex>
+        </Flex>
     </Status>
   )
   
 const RoutesSwitch = () => (
 	<Switch>
 		<Route exact path="/" component={Home} />
-		<Route exact path="/hi" render={()=>(
+		<Route exact path="/users" component={Users} />
+		<Route exact path="/repository/:repositoryName" render={()=>(
 			<div>
-				hi!
+				{props.match.params.repositoryName}
 			</div>
 		)} />
 		<Route component={NotFound}/>
@@ -42,7 +50,7 @@ const Routes = () =>(
     <I18nProvider>
 		{
 			(process.env.NODE_ENV !== 'production') ?
-				<XRay disabled={false} color={'#e5a87d'} backgroundColor={'#004d84'}>
+				<XRay disabled={false} color={'#e5a87d'} backgroundColor={'#004d84'} style={{ height: '100%' }} >
 					<RoutesSwitch />
 				</XRay>
 			: 

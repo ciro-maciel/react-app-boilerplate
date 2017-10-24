@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -12,7 +13,7 @@ import Navigation from '../../components/navigation';
 import Menu from '../../components/menu';
 
 
-class Home extends Component {
+class Users extends Component {
     render() {
         const { intl } = this.props;
         return (
@@ -24,24 +25,8 @@ class Home extends Component {
                 </Helmet>
                 <Flex wrap width={1024}>
                     <Flex wrap width={1} style={{alignSelf: 'flex-start'}}>
-                        <Box width={[ 1, 3/12 ]} p={[1, 2]}>
-                            <Menu 
-                                title={intl.formatMessage({id: "6592623"})} 
-                                items={[
-                                        {
-                                            display: intl.formatMessage({id: "71ef8f1"}), 
-                                            url: '/'
-                                        },{
-                                            display: intl.formatMessage({id: "6871c58"}), 
-                                            url: '/users'
-                                        }
-                                    ]} 
-                            />
-                        </Box>
-                        <Box width={[ 1, 9/12 ]} p={[1, 2]}>
-                            {/* <Navigation>
-                                <FormattedMessage id="71ef8f1" />
-                            </Navigation> */}
+                        <Box width={1} p={[1, 2]}>
+                            <p><Link to={"/"}>Return to Home</Link></p>
                         </Box>
                     </Flex>
                     <Footer />
@@ -56,4 +41,4 @@ export default connect(
     dispatch => ({
         handleChange: (locale) => dispatch(i18nChange(locale)),
     })
-)(injectIntl(Home))
+)(injectIntl(Users))

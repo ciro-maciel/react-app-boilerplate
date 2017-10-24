@@ -8,7 +8,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     background-color: ${props => props.theme.background};
-    color: rgba(255, 255, 255, 0.8);
     padding: 0.75rem;
 `;
 
@@ -17,48 +16,38 @@ const Title = styled.div`
     justify-content: center;
     font-weight: 500;
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.9);
     margin-top: 0 !important;
     margin-bottom: 1rem;
     text-transform: uppercase;
 `;
 
 
+const Item = styled.li`
+    padding: 5px;
+`;
 
-const Containesr = ({ title, items, ...props }) => {
-    const listItems = items.map((item) =>
-        <li key={item.display}>
+const Items = ({ items }) => (
+    items.map((item) =>
+        <Item key={item.display}>
             <Link url={item.url}>
                 {item.display}
             </Link>
-        </li>
-    );
-    return <ul key={"list"}>{listItems}</ul>;
-    // return ([
-    //     <div key={"title"}>{title}</div>,
-    //     <ul key={"list"}>{listItems}</ul>
-    // ])
-}
+        </Item>
+    )
+)
 
-const Mesnu = styled(Container)`
-    color: #24292e;
-    background-color: #eff3f6;
-    font-size: 12px;
-    font-weight: 600;
-    ul{
-        list-style-type: none;
-    }
-    border: 1px solid red;
-    padding-left: 20px;
-    user-select: none;
-    appearance: none;
+const List = styled.ul`
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 0px;
 `;
-
 
 const Menu = ({ title, items, ...props }) => (
     <Container>
         <Title>{title}</Title>
-
+        <List>
+            <Items items={items} />
+        </List>
     </Container>
 )
 
