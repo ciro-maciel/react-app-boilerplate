@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import { reducer as form } from 'redux-form';
 
-// import i18n from '../containers/i18n/reducer';
+import i18n from '../containers/i18n/reducer';
 // import signUp from '../containers/SignUp/reducer';
 // import signIn from '../containers/SignIn/reducer';
 // import signOut from '../containers/SignOut/reducer';
@@ -14,7 +14,7 @@ import { reducer as form } from 'redux-form';
 // https://stackoverflow.com/questions/36786244/nested-redux-reducers
 export default combineReducers({
     form, 
-    // i18n,
+    i18n,
     // signUp,
     // signIn,
     // signOut,

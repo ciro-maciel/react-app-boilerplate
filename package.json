@@ -29,6 +29,7 @@
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2",
         "redux": "^3.7.2",
+        "redux-form": "^7.0.4",
         "redux-observable": "^0.16.0",
         "rxjs": "^5.4.3",
         "styled-components": "^2.2.1"
@@ -45,6 +46,8 @@
         "dotenv-webpack": "^1.5.4",
         "html-webpack-plugin": "^2.29.0",
         "jest": "^21.2.1",
+        "glamor": "^2.20.40",
+        "react-x-ray": "^1.0.0-3",
         "nodemon": "^1.12.1",
         "redux-logger": "^3.0.6",
         "rimraf": "^2.6.2",

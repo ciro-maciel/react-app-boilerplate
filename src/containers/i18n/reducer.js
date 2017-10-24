@@ -2,29 +2,27 @@ import {
     I18n_CHANGE
 } from './types';
 
-// import utility from '@c37/utility';
-
 import {
     addLocaleData
 } from 'react-intl';
 
 import pt from 'react-intl/locale-data/pt';
 import en from 'react-intl/locale-data/en';
-// import { account } from '@c37/locale';
+import pt_BR from './data/pt-BR';
+import en_US from './data/en-US';
 
-// let dataMessages = {
-//   'pt-BR': account.pt_BR,
-//   'en-US': account.en_US,
-// }
+let dataMessages = {
+    'pt-BR': pt_BR,
+    'en-US': en_US
+}
 
 addLocaleData([...en, ...pt]);
 
-const hasCookieLocale = false,
-    navigatorLocale = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.usserLanguage || 'pt-BR',
-    cookieLocale = null;
-
-let locale = hasCookieLocale ? cookieLocale : navigatorLocale,
-    messages = {};
+const navigatorLocale = (typeof window !== 'undefined') ? (navigator.languages && navigator.languages[0]) || navigator.language || navigator.usserLanguage || 'pt-BR' : 'pt-BR',
+    cookieLocale = (typeof window !== 'undefined') ? decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent('locale').replace(/[\\]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null : null;
+   
+let locale = cookieLocale ? cookieLocale : navigatorLocale,
+    messages = flattenMessages(dataMessages[locale]);
 
 let initialState = {
     locale,
@@ -34,28 +32,39 @@ saveInCookie(locale);
 
 function saveInCookie(locale) {
     const validAt = new Date().setDate(new Date().getDate() + 360),
-        domain = window.location.hostname === 'localhost' ? 'localhost' : 'c37.co';
+        domain = window.location.hostname === 'localhost' ? 'localhost' : 'c37.co',
+        path = '/';
 
-    // document.cookie = "locale=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
-
-
-    // utility.navigator.cookie.add('locale', locale, validAt, '/', domain)
+    document.cookie = encodeURIComponent('locale') + "=" + encodeURIComponent(locale) + "; expires=" + validAt + (domain ? "; domain=" + domain : "") + (path ? "; path=" + path : "");
 }
 
+// https://github.com/yahoo/react-intl/wiki/Upgrade-Guide
+function flattenMessages(nestedMessages, prefix = '') {
+    return Object.keys(nestedMessages).reduce((messages, key) => {
+        let value = nestedMessages[key];
+        let prefixedKey = prefix ? `${prefix}.${key}` : key;
+
+        if (typeof value === 'string') {
+            messages[prefixedKey] = value;
+        } else {
+            Object.assign(messages, flattenMessages(value, prefixedKey));
+        }
+
+        return messages;
+    }, {});
+}
 
 export default function I18n(state = initialState, action) {
     switch (action.type) {
         case I18n_CHANGE:
             {
-
-                saveInCookie(action.payload.locale);
-
+                var locale = action.payload;
+                saveInCookie(locale);
                 return {
                     ...state,
-                    locale: action.payload.locale,
-                    messages: utility.i18n.flattenMessages(dataMessages[action.payload.locale])
+                    locale,
+                    messages: flattenMessages(dataMessages[locale])
                 };
-
             }
         default:
             return state;

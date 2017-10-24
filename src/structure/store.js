@@ -21,6 +21,6 @@ if (process.env.NODE_ENV !== 'production') {
     middlewares.push(logger);
 } 
 store = createStore(reducer, applyMiddleware(...middlewares))
-// console.log(store.getState())
+console.log(store.getState())
 
 export default store;
