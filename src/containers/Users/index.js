@@ -12,11 +12,13 @@ import Footer from '../../components/footer';
 import Button from '../../components/button';
 import Menu from '../../components/menu';
 import Input from '../../components/input';
+import TableUser from '../../components/table-user';
 
+import { usersRequest } from './actions';
 
 class Users extends Component {
     render() {
-        const { intl } = this.props;
+        const { intl, handleSearch, users } = this.props;
         return (
             <Flex justify='center' style={{ height: '100%' }}>
                 <Helmet>
@@ -31,12 +33,14 @@ class Users extends Component {
                                 <FormattedMessage id="b4db309"/>
                             </Link>
                             <h2> Pesquisa de Usuarios </h2>
-
-                            <Input type="text" />
-                            <Button>
+                            <Input type="text" innerRef={(input) => { this.textQuery = input; }} />
+                            <Button onClick={() =>  handleSearch(this.textQuery.value)}>
                                 Procurar
                             </Button>
-
+                            {
+                                (users.found && users.found.items) &&
+                                    <TableUser items={users.found.items} />
+                            }
                         </Box>
                     </Flex>
                     <Footer />
@@ -47,8 +51,8 @@ class Users extends Component {
 }
 
 export default connect(
-    state => ({ i18n: state.i18n }),
+    state => ({ users: state.users }),
     dispatch => ({
-        handleChange: (locale) => dispatch(i18nChange(locale)),
+        handleSearch: (query) => dispatch(usersRequest(query)),
     })
 )(injectIntl(Users))

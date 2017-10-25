@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Input = styled.input `
+const Input = styled.input`
     height: 27px;
     width: 100%;
     font-size: 12px;
