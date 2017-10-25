@@ -49,8 +49,8 @@ const RoutesSwitch = () => (
 const Routes = () =>(
     <I18nProvider>
 		{
-			(process.env.NODE_ENV !== 'production') ?
-				<XRay disabled={false} color={'#e5a87d'} backgroundColor={'#004d84'} style={{ height: '100%' }} >
+			(process.env.NODE_ENV && process.env.NODE_ENV !== 'production') ?
+				<XRay disabled={true} color={'#e5a87d'} backgroundColor={'#004d84'} style={{ height: '100%' }} >
 					<RoutesSwitch />
 				</XRay>
 			: 

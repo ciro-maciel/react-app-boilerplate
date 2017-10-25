@@ -32,10 +32,12 @@ saveInCookie(locale);
 
 function saveInCookie(locale) {
     const validAt = new Date().setDate(new Date().getDate() + 360),
-        domain = window.location.hostname === 'localhost' ? 'localhost' : 'c37.co',
+        domain = (typeof window !== 'undefined') ? window.location.hostname === 'localhost' ? 'localhost' : '@ciro-maciel' : '@ciro-maciel' ,
         path = '/';
 
-    document.cookie = encodeURIComponent('locale') + "=" + encodeURIComponent(locale) + "; expires=" + validAt + (domain ? "; domain=" + domain : "") + (path ? "; path=" + path : "");
+    if (typeof window !== 'undefined') {
+        document.cookie = encodeURIComponent('locale') + "=" + encodeURIComponent(locale) + "; expires=" + validAt + (domain ? "; domain=" + domain : "") + (path ? "; path=" + path : "");
+    }
 }
 
 // https://github.com/yahoo/react-intl/wiki/Upgrade-Guide

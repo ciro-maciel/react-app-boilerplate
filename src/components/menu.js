@@ -14,7 +14,7 @@ const Container = styled.div`
 const Title = styled.div`
     display: flex;
     justify-content: center;
-    font-weight: 500;
+    font-weight: bold;
     font-size: 1.125rem;
     margin-top: 0 !important;
     margin-bottom: 1rem;

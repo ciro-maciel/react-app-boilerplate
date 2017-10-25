@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Navigation = styled.div `
+const Button = styled.div `
     color: #24292e;
     background-color: #eff3f6;
     background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
@@ -22,4 +22,4 @@ const Navigation = styled.div `
     appearance: none;
 `;
 
-export default Navigation;
+export default Button;

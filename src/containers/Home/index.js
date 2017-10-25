@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from "react-helmet";
+import { Link } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { Flex, Box } from 'grid-styled';
 
 import { I18nOption } from '../i18n';
 
+import marked from 'marked';
+const renderer = new marked.Renderer();
+renderer.link = function (href, title, text) {
+    return (href.indexOf('#') > -1) ? `<a href=#/${href}>${text}</a>` : `<a href=${href}>${text}</a>`;
+}
+
 import Footer from '../../components/footer';
-import Navigation from '../../components/navigation';
 import Menu from '../../components/menu';
+import readme from '../../../README.md';
 
 
 class Home extends Component {
+    createMarkup(readme) {
+        return { __html: marked(readme, { renderer: renderer }) };
+    }    
     render() {
         const { intl } = this.props;
         return (
@@ -39,9 +49,9 @@ class Home extends Component {
                             />
                         </Box>
                         <Box width={[ 1, 9/12 ]} p={[1, 2]}>
-                            {/* <Navigation>
-                                <FormattedMessage id="71ef8f1" />
-                            </Navigation> */}
+
+                            <div dangerouslySetInnerHTML={this.createMarkup(readme)} />
+                            
                         </Box>
                     </Flex>
                     <Footer />

@@ -9,8 +9,9 @@ import { Flex, Box } from 'grid-styled';
 import { I18nOption } from '../i18n';
 
 import Footer from '../../components/footer';
-import Navigation from '../../components/navigation';
+import Button from '../../components/button';
 import Menu from '../../components/menu';
+import Input from '../../components/input';
 
 
 class Users extends Component {
@@ -26,7 +27,16 @@ class Users extends Component {
                 <Flex wrap width={1024}>
                     <Flex wrap width={1} style={{alignSelf: 'flex-start'}}>
                         <Box width={1} p={[1, 2]}>
-                            <p><Link to={"/"}>Return to Home</Link></p>
+                            <Link to={"/"}>
+                                <FormattedMessage id="b4db309"/>
+                            </Link>
+                            <h2> Pesquisa de Usuarios </h2>
+
+                            <Input type="text" />
+                            <Button>
+                                Procurar
+                            </Button>
+
                         </Box>
                     </Flex>
                     <Footer />

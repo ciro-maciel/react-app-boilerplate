@@ -15,6 +15,9 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/,
             loader: "babel-loader"
+        }, {
+            test: /\.md$/,
+            use: "raw-loader"
         }]
     },
     plugins: [
