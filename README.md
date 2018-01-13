@@ -18,6 +18,13 @@ npm install
 npm run dev:client
 ```
 
+##More References
+- [Workbox: Flexible PWA Libraries (Chrome Dev Summit 2017)](https://www.youtube.com/watch?v=DtuJ55tmjps)
+- [Nested redux reducers](https://stackoverflow.com/questions/36786244/nested-redux-reducers)
+- [Is nested combineReducers a bad or good idea? #738](https://github.com/reactjs/redux/issues/738)
+- [Images not served properly #104](https://github.com/awslabs/aws-serverless-express/issues/104)
+
+
 ## Table of Contents
 - [Introduction](#introduction)
   - [Structured for Team Development](#structured-for-team-developmen)
