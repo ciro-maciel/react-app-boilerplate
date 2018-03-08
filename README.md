@@ -1,5 +1,5 @@
-## React/Preact - Boilerplate
-My version of React/Preact Application Boilerplate with:
+## React/Preact - Template
+My version of React/Preact Application Template with:
 
 |                                 |                             |                       |
 |---------------------------------|-----------------------------|-----------------------|
