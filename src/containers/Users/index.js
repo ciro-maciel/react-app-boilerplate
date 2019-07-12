@@ -33,7 +33,7 @@ class Users extends Component {
                                 <FormattedMessage id="b4db309"/>
                             </Link>
                             <h2> Pesquisa de Usuarios </h2>
-                            <Input type="text" innerRef={(input) => { this.textQuery = input; }} />
+                            <Input type="text" ref={(input) => { this.textQuery = input; }} />
                             <Button onClick={() =>  handleSearch(this.textQuery.value)}>
                                 Procurar
                             </Button>

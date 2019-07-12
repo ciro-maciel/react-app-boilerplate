@@ -17,7 +17,7 @@ app.set("x-powered-by", false);
 app.use(compression());
 
 app.use('/assets', express.static(__dirname + '/../public/assets'));
-const manifestJs = fs.readFileSync(__dirname + '/../public/assets/js/manifest.js', 'utf8');
+// const manifestJs = fs.readFileSync(__dirname + '/../public/manifest.json', 'utf8');
 
 
 app.get('*', function(req, res) {
@@ -25,14 +25,39 @@ app.get('*', function(req, res) {
 	const context = {};
 
 	const styleSheet = new ServerStyleSheet()
-	const renderHtml = renderToString(styleSheet.collectStyles(
+	// const renderHtml = renderToString(styleSheet.collectStyles(
+	// 	<StaticRouter location={req.url} context={context}>
+	// 		<Main />
+	// 	</StaticRouter>
+	// ));
+
+	const renderHtml = renderToString(
 		<StaticRouter location={req.url} context={context}>
 			<Main />
 		</StaticRouter>
-	));
+	);
+
 	const helmet = Helmet.renderStatic();
 	const styleTags = styleSheet.getStyleTags()
 
+	// let html = `
+	// 	<!doctype html>
+	// 	<html ${helmet.htmlAttributes.toString()}>
+	// 		<head>
+	// 			<meta charset="UTF-8">
+	// 			${helmet.title.toString()}
+	// 			${helmet.meta.toString()}
+	// 			${helmet.link.toString()}
+	// 			${styleTags}
+	// 			<link rel="icon" type="image/ico" href="/assets/img/favicon.ico">
+	// 			<link rel="manifest" href="/manifest.json">
+	// 		</head>
+	// 		<body ${helmet.bodyAttributes.toString()}>
+	// 			<div id="container">${renderHtml}</div>
+	// 			//<script type="text/javascript" src="/assets/js/main.js" charset="utf-8"></script>
+	// 		</body>
+	// 	</html>
+	// `;	
 	let html = `
 		<!doctype html>
 		<html ${helmet.htmlAttributes.toString()}>
@@ -41,10 +66,9 @@ app.get('*', function(req, res) {
 				${helmet.title.toString()}
 				${helmet.meta.toString()}
 				${helmet.link.toString()}
-				<style>${styleTags}</style>
+				${styleTags}
 				<link rel="icon" type="image/ico" href="/assets/img/favicon.ico">
-				<link rel="manifest" href="/manifest.json">
-				<script type="text/javascript" charset="utf-8">${manifestJs}</script>
+				<script type="text/javascript" src="assets/js/manifest.js" charset="utf-8"></script>
 			</head>
 			<body ${helmet.bodyAttributes.toString()}>
 				<div id="container">${renderHtml}</div>
