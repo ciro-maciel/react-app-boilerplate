@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { Flex, Box } from 'grid-styled';
+import { Flex } from "rebass";
 
-import { I18nOption } from '../containers/i18n';
+import { I18nOption } from "../containers/i18n";
 
-const Footer = () =>(
-    <Box width={1} pb={1} style={{alignSelf:'flex-end', textAlign:'center'}}>
-        <I18nOption />
-    </Box>
-)
+const Footer = () => (
+  <Flex width={1} pb={1} justifyContent="center" alignItems="center">
+    <I18nOption />
+  </Flex>
+);
 
 export default Footer;
