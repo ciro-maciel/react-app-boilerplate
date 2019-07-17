@@ -16,7 +16,7 @@ renderer.link = function(href, title, text) {
 
 import Footer from "../../components/footer";
 import Menu from "../../components/menu";
-import readme from "../../../README.md";
+// import readme from "../../../README.md";
 
 class Home extends Component {
   createMarkup(readme) {
@@ -54,7 +54,7 @@ class Home extends Component {
               />
             </Box>
             <Box width={[1, 9 / 12]} p={[1, 2]}>
-              <div dangerouslySetInnerHTML={this.createMarkup(readme)} />
+              {/* <div dangerouslySetInnerHTML={this.createMarkup(readme)} /> */}
             </Box>
           </Flex>
           <Footer />

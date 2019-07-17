@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { Flex, Box } from 'grid-styled';
+import { Flex, Box } from 'rebass';
 
 import { I18nOption } from '../i18n';
 
@@ -20,14 +20,14 @@ class Users extends Component {
   render() {
     const { intl, handleSearch, users } = this.props;
     return (
-      <Flex justify="center" style={{ height: '100%' }}>
+      <Flex justifyContent="center">
         <Helmet>
           <meta charSet="utf-8" />
           <title>@ciro-maciel/My version of React/Preact Application Boilerplate</title>
           <link rel="canonical" href="https://ciro-maciel.github.io/react-app-boilerplate/" />
         </Helmet>
-        <Flex wrap width={1024}>
-          <Flex wrap width={1} style={{ alignSelf: 'flex-start' }}>
+        <Flex flexWrap="wrap" width={1024}>
+          <Flex flexWrap="wrap" width={1}>
             <Box width={1} p={[1, 2]}>
               <Link to={'/'}>
                 <FormattedMessage id="b4db309" />

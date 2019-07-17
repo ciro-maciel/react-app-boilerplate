@@ -2,6 +2,7 @@ service: sorrir-viver-account
 
 plugins:
   - serverless-apigw-binary
+  - serverless-webpack
   - serverless-offline
 
 custom:
@@ -9,6 +10,8 @@ custom:
   apigwBinary:
     types:
       - '*/*'
+  webpack:
+    webpackConfig: ./webpack.config.js      
 
 provider:
   name: aws
@@ -18,7 +21,7 @@ provider:
 
 functions:
   function:
-    handler: config/server.handler
+    handler: server.handlerZZZ
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
