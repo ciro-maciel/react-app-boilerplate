@@ -82,133 +82,10 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./server.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/server.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./server.js":
-/*!*******************!*\
-  !*** ./server.js ***!
-  \*******************/
-/*! exports provided: handlerZZZ */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handlerZZZ", function() { return handlerZZZ; });
-/* harmony import */ var serverless_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! serverless-http */ "serverless-http");
-/* harmony import */ var serverless_http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(serverless_http__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom/server */ "react-dom/server");
-/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "react-router");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_router__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-helmet */ "react-helmet");
-/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _src_main__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./src/main */ "./src/main.js");
-// http://expressjs.com/pt-br/advanced/best-practice-performance.html
-// https://www.npmjs.com/package/serverless-api-compression
-// https://github.com/awslabs/aws-serverless-express/issues/99
-var path = __webpack_require__(/*! path */ "path"),
-    express = __webpack_require__(/*! express */ "express"),
-    compression = __webpack_require__(/*! compression */ "compression"),
-    awsServerlessExpress = __webpack_require__(/*! aws-serverless-express */ "aws-serverless-express");
-
-
-
-var awsServerlessExpressMiddleware = __webpack_require__(/*! aws-serverless-express/middleware */ "aws-serverless-express/middleware");
-
-
-
-
-
-
-
-
-
-var app = express(),
-    mimeTypes = ['application/javascript', 'application/json', 'application/octet-stream', 'application/x-font-ttf', 'application/x-font-woff', 'application/font-woff', 'application/font-woff2', 'application/xml', 'font/eot', 'font/woff', 'font/opentype', 'font/otf', 'image/jpeg', 'image/png', 'image/svg+xml', 'image/x-icon', 'text/comma-separated-values', 'text/css', 'text/html', 'text/javascript', 'text/plain', 'text/text', 'text/xml'];
-
-app.use(awsServerlessExpressMiddleware.eventContext());
-
-app.set('x-powered-by', false);
-app.use(compression());
-
-app.get('/event', function (req, res) {
-  res.json(req.apiGateway.event);
-});
-
-// https://expressjs.com/pt-br/starter/static-files.html
-app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
-
-// // https://stackoverflow.com/questions/49961731/react-router-4-and-express-cannot-get
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "../www", "index.html"));
-// });
-
-app.get('**', function (req, res) {
-  var context = {};
-
-  var styleSheet = new styled_components__WEBPACK_IMPORTED_MODULE_3__["ServerStyleSheet"]();
-
-  var renderHtml = Object(react_dom_server__WEBPACK_IMPORTED_MODULE_2__["renderToString"])(styleSheet.collectStyles(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(
-    react_router__WEBPACK_IMPORTED_MODULE_4__["StaticRouter"],
-    { location: req.url, context: context },
-    react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_src_main__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  )));
-
-  var helmet = react_helmet__WEBPACK_IMPORTED_MODULE_5___default.a.renderStatic();
-  var styleTags = styleSheet.getStyleTags();
-
-  // let html = `
-  //         <!doctype html>
-  //         <html ${helmet.htmlAttributes.toString()}>
-  //             <head>
-  //                 <meta charset="UTF-8">
-  //                 ${helmet.title.toString()}
-  //                 ${helmet.meta.toString()}
-  //                 ${helmet.link.toString()}
-  //                 ${styleTags}
-  //                 <link rel="icon" type="image/ico" href="/assets/img/favicon.ico">
-  //                 <script type="text/javascript" src="assets/js/manifest.js" charset="utf-8"></script>
-  //             </head>
-  //             <body ${helmet.bodyAttributes.toString()}>
-  //                 <div id="container">${renderHtml}</div>
-  //                 <script type="text/javascript" src="/assets/js/main.js" charset="utf-8"></script>
-  //             </body>
-  //         </html>
-  //     `;
-  var html = '\n      <!doctype html>\n      <html ' + helmet.htmlAttributes.toString() + '>\n          <head>\n              <meta charset="UTF-8">\n              ' + helmet.title.toString() + '\n              ' + helmet.meta.toString() + '\n              ' + helmet.link.toString() + '\n              ' + styleTags + '\n              <link rel="icon" type="image/ico" href="/assets/img/favicon.ico">\n              <script type="text/javascript" src="assets/js/manifest.js" charset="utf-8"></script>\n          </head>\n          <body ' + helmet.bodyAttributes.toString() + '>\n              <div id="container">' + renderHtml + '</div>\n          </body>\n      </html>\n  ';
-
-  // context.url will contain the URL to redirect to if a <Redirect> was used
-  if (context.url) {
-    res.writeHead(302, {
-      Location: context.url
-    });
-    res.end();
-  } else {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write(html);
-    res.end();
-  }
-});
-
-// export const handlerZZZ = serverless(app, {
-//   binary: ['text/html', 'image/*']
-// });
-
-var server = awsServerlessExpress.createServer(app, null, mimeTypes);
-
-var handlerZZZ = function handlerZZZ(event, context) {
-  return awsServerlessExpress.proxy(server, event, context);
-};
-/* WEBPACK VAR INJECTION */}.call(this, "/"))
-
-/***/ }),
 
 /***/ "./src/components/button.js":
 /*!**********************************!*\
@@ -1138,69 +1015,69 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 var dataMessages = {
-    'pt-BR': _data_pt_BR__WEBPACK_IMPORTED_MODULE_4___default.a,
-    'en-US': _data_en_US__WEBPACK_IMPORTED_MODULE_5___default.a
+  'pt-BR': _data_pt_BR__WEBPACK_IMPORTED_MODULE_4___default.a,
+  'en-US': _data_en_US__WEBPACK_IMPORTED_MODULE_5___default.a
 };
 
 Object(react_intl__WEBPACK_IMPORTED_MODULE_1__["addLocaleData"])([].concat(_toConsumableArray(react_intl_locale_data_en__WEBPACK_IMPORTED_MODULE_3___default.a), _toConsumableArray(react_intl_locale_data_pt__WEBPACK_IMPORTED_MODULE_2___default.a)));
 
 var navigatorLocale = typeof window !== 'undefined' ? navigator.languages && navigator.languages[0] || navigator.language || navigator.usserLanguage || 'pt-BR' : 'pt-BR',
-    cookieLocale = typeof window !== 'undefined' ? decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent('locale').replace(/[\\]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null : null;
+    cookieLocale = typeof window !== 'undefined' ? decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent('locale').replace(/[\\]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null : null;
 
 var locale = cookieLocale ? cookieLocale : navigatorLocale,
     messages = flattenMessages(dataMessages[locale]);
 
 var initialState = {
-    locale: locale,
-    messages: messages
+  locale: locale,
+  messages: messages
 };
 saveInCookie(locale);
 
 function saveInCookie(locale) {
-    var validAt = new Date().setDate(new Date().getDate() + 360),
-        domain = typeof window !== 'undefined' ? window.location.hostname === 'localhost' ? 'localhost' : '@ciro-maciel' : '@ciro-maciel',
-        path = '/';
+  var validAt = new Date().setDate(new Date().getDate() + 360),
+      domain = typeof window !== 'undefined' ? window.location.hostname === 'localhost' ? 'localhost' : '@ciro-maciel' : '@ciro-maciel',
+      path = '/';
 
-    if (typeof window !== 'undefined') {
-        document.cookie = encodeURIComponent('locale') + "=" + encodeURIComponent(locale) + "; expires=" + validAt + (domain ? "; domain=" + domain : "") + (path ? "; path=" + path : "");
-    }
+  if (typeof window !== 'undefined') {
+    document.cookie = encodeURIComponent('locale') + '=' + encodeURIComponent(locale) + '; expires=' + validAt + (domain ? '; domain=' + domain : '') + (path ? '; path=' + path : '');
+  }
 }
 
 // https://github.com/yahoo/react-intl/wiki/Upgrade-Guide
 function flattenMessages(nestedMessages) {
-    var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-    return Object.keys(nestedMessages).reduce(function (messages, key) {
-        var value = nestedMessages[key];
-        var prefixedKey = prefix ? prefix + '.' + key : key;
+  return Object.keys(nestedMessages).reduce(function (messages, key) {
+    var value = nestedMessages[key];
+    var prefixedKey = prefix ? prefix + '.' + key : key;
 
-        if (typeof value === 'string') {
-            messages[prefixedKey] = value;
-        } else {
-            Object.assign(messages, flattenMessages(value, prefixedKey));
-        }
+    if (typeof value === 'string') {
+      messages[prefixedKey] = value;
+    } else {
+      Object.assign(messages, flattenMessages(value, prefixedKey));
+    }
 
-        return messages;
-    }, {});
+    return messages;
+  }, {});
 }
 
 function I18n() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments[1];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
 
-    switch (action.type) {
-        case _types__WEBPACK_IMPORTED_MODULE_0__["I18n_CHANGE"]:
-            {
-                var locale = action.payload;
-                saveInCookie(locale);
-                return _extends({}, state, {
-                    locale: locale,
-                    messages: flattenMessages(dataMessages[locale])
-                });
-            }
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case _types__WEBPACK_IMPORTED_MODULE_0__["I18n_CHANGE"]:
+      {
+        var locale = action.payload;
+        saveInCookie(locale);
+        return _extends({}, state, {
+          locale: locale,
+          messages: flattenMessages(dataMessages[locale])
+        });
+      }
+    default:
+      return state;
+  }
 }
 
 /***/ }),
@@ -1219,10 +1096,10 @@ var I18n_CHANGE = 'i18n_CHANGE';
 
 /***/ }),
 
-/***/ "./src/main.js":
-/*!*********************!*\
-  !*** ./src/main.js ***!
-  \*********************/
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1232,8 +1109,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _structure_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./structure/routes */ "./src/structure/routes.js");
-/* harmony import */ var _structure_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./structure/store */ "./src/structure/store.js");
+/* harmony import */ var _middleware_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./middleware/routes */ "./src/middleware/routes.js");
+/* harmony import */ var _middleware_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./middleware/store */ "./src/middleware/store.js");
 
 
 
@@ -1263,8 +1140,8 @@ __webpack_require__.r(__webpack_exports__);
 var Main = function Main() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
     react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"],
-    { store: _structure_store__WEBPACK_IMPORTED_MODULE_3__["default"] },
-    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_structure_routes__WEBPACK_IMPORTED_MODULE_2__["default"], null)
+    { store: _middleware_store__WEBPACK_IMPORTED_MODULE_3__["default"] },
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_middleware_routes__WEBPACK_IMPORTED_MODULE_2__["default"], null)
   );
 };
 
@@ -1274,15 +1151,14 @@ var Main = function Main() {
 //   </div>
 // );
 
-
 /* harmony default export */ __webpack_exports__["default"] = (Main);
 
 /***/ }),
 
-/***/ "./src/structure/epics.js":
-/*!********************************!*\
-  !*** ./src/structure/epics.js ***!
-  \********************************/
+/***/ "./src/middleware/epics.js":
+/*!*********************************!*\
+  !*** ./src/middleware/epics.js ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1299,10 +1175,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/structure/reducers.js":
-/*!***********************************!*\
-  !*** ./src/structure/reducers.js ***!
-  \***********************************/
+/***/ "./src/middleware/reducers.js":
+/*!************************************!*\
+  !*** ./src/middleware/reducers.js ***!
+  \************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1310,12 +1186,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-form */ "redux-form");
-/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_form__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _containers_i18n_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../containers/i18n/reducer */ "./src/containers/i18n/reducer.js");
-/* harmony import */ var _containers_Users_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../containers/Users/reducer */ "./src/containers/Users/reducer.js");
-
-
+/* harmony import */ var _containers_i18n_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../containers/i18n/reducer */ "./src/containers/i18n/reducer.js");
+/* harmony import */ var _containers_Users_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../containers/Users/reducer */ "./src/containers/Users/reducer.js");
 
 
 
@@ -1325,17 +1197,16 @@ __webpack_require__.r(__webpack_exports__);
 // https://github.com/reactjs/redux/issues/738
 // https://stackoverflow.com/questions/36786244/nested-redux-reducers
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-    form: redux_form__WEBPACK_IMPORTED_MODULE_1__["reducer"],
-    i18n: _containers_i18n_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-    users: _containers_Users_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+    i18n: _containers_i18n_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+    users: _containers_Users_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),
 
-/***/ "./src/structure/routes.js":
-/*!*********************************!*\
-  !*** ./src/structure/routes.js ***!
-  \*********************************/
+/***/ "./src/middleware/routes.js":
+/*!**********************************!*\
+  !*** ./src/middleware/routes.js ***!
+  \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1349,8 +1220,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_x_ray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-x-ray */ "react-x-ray");
 /* harmony import */ var react_x_ray__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_x_ray__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var grid_styled__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! grid-styled */ "grid-styled");
-/* harmony import */ var grid_styled__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(grid_styled__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var rebass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rebass */ "rebass");
+/* harmony import */ var rebass__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(rebass__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _containers_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../containers/i18n */ "./src/containers/i18n/index.js");
 /* harmony import */ var _containers_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../containers/Home */ "./src/containers/Home/index.js");
 /* harmony import */ var _containers_Users__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../containers/Users */ "./src/containers/Users/index.js");
@@ -1394,13 +1265,13 @@ var NotFound = function NotFound() {
     Status,
     { code: 404 },
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-      grid_styled__WEBPACK_IMPORTED_MODULE_4__["Flex"],
+      rebass__WEBPACK_IMPORTED_MODULE_4__["Flex"],
       { justify: "center", style: { height: "100%" } },
       react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-        grid_styled__WEBPACK_IMPORTED_MODULE_4__["Flex"],
+        rebass__WEBPACK_IMPORTED_MODULE_4__["Flex"],
         { wrap: true, width: 1024 },
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-          grid_styled__WEBPACK_IMPORTED_MODULE_4__["Box"],
+          rebass__WEBPACK_IMPORTED_MODULE_4__["Box"],
           { width: 1, style: { textAlign: "center" } },
           react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
             "h1",
@@ -1489,10 +1360,10 @@ var Routes = function Routes() {
 
 /***/ }),
 
-/***/ "./src/structure/store.js":
-/*!********************************!*\
-  !*** ./src/structure/store.js ***!
-  \********************************/
+/***/ "./src/middleware/store.js":
+/*!*********************************!*\
+  !*** ./src/middleware/store.js ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1502,8 +1373,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var redux_observable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-observable */ "redux-observable");
 /* harmony import */ var redux_observable__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_observable__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reducers */ "./src/structure/reducers.js");
-/* harmony import */ var _epics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./epics */ "./src/structure/epics.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reducers */ "./src/middleware/reducers.js");
+/* harmony import */ var _epics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./epics */ "./src/middleware/epics.js");
 
 
 
@@ -1527,6 +1398,125 @@ if (true) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (store);
+
+/***/ }),
+
+/***/ "./src/server.js":
+/*!***********************!*\
+  !*** ./src/server.js ***!
+  \***********************/
+/*! exports provided: handlerZZZ */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handlerZZZ", function() { return handlerZZZ; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ "react-dom/server");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "react-router");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-helmet */ "react-helmet");
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index */ "./src/index.js");
+// http://expressjs.com/pt-br/advanced/best-practice-performance.html
+// https://www.npmjs.com/package/serverless-api-compression
+// https://github.com/awslabs/aws-serverless-express/issues/99
+var path = __webpack_require__(/*! path */ "path"),
+    express = __webpack_require__(/*! express */ "express"),
+    compression = __webpack_require__(/*! compression */ "compression"),
+    awsServerlessExpress = __webpack_require__(/*! aws-serverless-express */ "aws-serverless-express");
+
+var awsServerlessExpressMiddleware = __webpack_require__(/*! aws-serverless-express/middleware */ "aws-serverless-express/middleware");
+
+
+
+
+
+
+
+
+
+var app = express(),
+    mimeTypes = ['application/javascript', 'application/json', 'application/octet-stream', 'application/x-font-ttf', 'application/x-font-woff', 'application/font-woff', 'application/font-woff2', 'application/xml', 'font/eot', 'font/woff', 'font/opentype', 'font/otf', 'image/jpeg', 'image/png', 'image/svg+xml', 'image/x-icon', 'text/comma-separated-values', 'text/css', 'text/html', 'text/javascript', 'text/plain', 'text/text', 'text/xml'];
+
+app.use(awsServerlessExpressMiddleware.eventContext());
+
+app.set('x-powered-by', false);
+app.use(compression());
+
+app.get('/event', function (req, res) {
+  res.json(req.apiGateway.event);
+});
+
+// https://expressjs.com/pt-br/starter/static-files.html
+app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
+
+// // https://stackoverflow.com/questions/49961731/react-router-4-and-express-cannot-get
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "../www", "index.html"));
+// });
+
+app.get('**', function (req, res) {
+  var context = {};
+
+  var styleSheet = new styled_components__WEBPACK_IMPORTED_MODULE_2__["ServerStyleSheet"]();
+
+  var renderHtml = Object(react_dom_server__WEBPACK_IMPORTED_MODULE_1__["renderToString"])(styleSheet.collectStyles(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    react_router__WEBPACK_IMPORTED_MODULE_3__["StaticRouter"],
+    { location: req.url, context: context },
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_index__WEBPACK_IMPORTED_MODULE_5__["default"], null)
+  )));
+
+  var helmet = react_helmet__WEBPACK_IMPORTED_MODULE_4___default.a.renderStatic();
+  var styleTags = styleSheet.getStyleTags();
+
+  // let html = `
+  //         <!doctype html>
+  //         <html ${helmet.htmlAttributes.toString()}>
+  //             <head>
+  //                 <meta charset="UTF-8">
+  //                 ${helmet.title.toString()}
+  //                 ${helmet.meta.toString()}
+  //                 ${helmet.link.toString()}
+  //                 ${styleTags}
+  //                 <link rel="icon" type="image/ico" href="/assets/img/favicon.ico">
+  //                 <script type="text/javascript" src="assets/js/manifest.js" charset="utf-8"></script>
+  //             </head>
+  //             <body ${helmet.bodyAttributes.toString()}>
+  //                 <div id="container">${renderHtml}</div>
+  //                 <script type="text/javascript" src="/assets/js/main.js" charset="utf-8"></script>
+  //             </body>
+  //         </html>
+  //     `;
+  var html = '\n      <!doctype html>\n      <html ' + helmet.htmlAttributes.toString() + '>\n          <head>\n              <meta charset="UTF-8">\n              ' + helmet.title.toString() + '\n              ' + helmet.meta.toString() + '\n              ' + helmet.link.toString() + '\n              ' + styleTags + '\n              <link rel="icon" type="image/ico" href="/assets/img/favicon.ico">\n              <script type="text/javascript" src="assets/js/manifest.js" charset="utf-8"></script>\n          </head>\n          <body ' + helmet.bodyAttributes.toString() + '>\n              <div id="container">' + renderHtml + '</div>\n          </body>\n      </html>\n  ';
+
+  // context.url will contain the URL to redirect to if a <Redirect> was used
+  if (context.url) {
+    res.writeHead(302, {
+      Location: context.url
+    });
+    res.end();
+  } else {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write(html);
+    res.end();
+  }
+});
+
+// export const handlerZZZ = serverless(app, {
+//   binary: ['text/html', 'image/*']
+// });
+
+var server = awsServerlessExpress.createServer(app, null, mimeTypes);
+
+var handlerZZZ = function handlerZZZ(event, context) {
+  return awsServerlessExpress.proxy(server, event, context);
+};
+/* WEBPACK VAR INJECTION */}.call(this, "/"))
 
 /***/ }),
 
@@ -1571,17 +1561,6 @@ module.exports = require("compression");
 /***/ (function(module, exports) {
 
 module.exports = require("express");
-
-/***/ }),
-
-/***/ "grid-styled":
-/*!******************************!*\
-  !*** external "grid-styled" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("grid-styled");
 
 /***/ }),
 
@@ -1739,17 +1718,6 @@ module.exports = require("redux");
 
 /***/ }),
 
-/***/ "redux-form":
-/*!*****************************!*\
-  !*** external "redux-form" ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-form");
-
-/***/ }),
-
 /***/ "redux-logger":
 /*!*******************************!*\
   !*** external "redux-logger" ***!
@@ -1780,17 +1748,6 @@ module.exports = require("redux-observable");
 /***/ (function(module, exports) {
 
 module.exports = require("rxjs/Rx");
-
-/***/ }),
-
-/***/ "serverless-http":
-/*!**********************************!*\
-  !*** external "serverless-http" ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("serverless-http");
 
 /***/ }),
 

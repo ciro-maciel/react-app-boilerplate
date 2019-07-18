@@ -21,7 +21,7 @@ provider:
 
 functions:
   function:
-    handler: server.handlerZZZ
+    handler: src/server.handlerZZZ
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'

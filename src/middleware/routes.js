@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router";
 import { Link } from "react-router-dom";
 import XRay from "react-x-ray";
 
-import { Flex, Box } from "grid-styled";
+import { Flex, Box } from "rebass";
 
 import { I18nProvider } from "../containers/i18n";
 import Home from "../containers/Home";
