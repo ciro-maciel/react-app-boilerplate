@@ -12,8 +12,9 @@ module.exports = {
   entry: slsw.lib.entries,
   output: {
     libraryTarget: 'commonjs2',
-    // path: path.resolve(__dirname, 'www', 'assets/js/'),
+    // path: path.resolve(__dirname, '../../www'),
     path: path.resolve(__dirname, '../../www'),
+    publicPath: "/service/src/",
     filename: '[name].js',
     // sourceMapFilename: '[file].map',
   },
@@ -50,8 +51,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyPlugin([{ from: 'src/index.html', to: '../index.html' }]),
-    // new DelWebpackPlugin({keepGeneratedAssets:false, allowExternal:true, include: ['**', '../../service/**']}),
+    // new CopyPlugin([{ from: 'src/index.html', to: '../index.html' }]),
   ],
 };
 
