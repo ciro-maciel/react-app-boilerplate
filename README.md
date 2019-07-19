@@ -169,3 +169,13 @@ my-app
 
 ## License
 CC-BY-NC-SA-4.0 - Attribution-NonCommercial-ShareAlike 4.0 International
+
+
+## Resources
+
+- [DynamoDB](https://github.com/99xt/serverless-dynamodb-local)
+- [Best Practices for Designing a Pragmatic RESTful API](https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
+- [Debugging lambda functions locally in VS Code](https://medium.com/@OneMuppet_/debugging-lambada-functions-locally-in-vscode-with-actual-break-points-deee6235f590)
+- [Node.js debugging in VS Code](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)
+
+I think it should be updated, though. I am running NodeJS 10.14 and the debug command in package.json should be “inspect” and not “debug”. Also default port (it seems) is 9229.

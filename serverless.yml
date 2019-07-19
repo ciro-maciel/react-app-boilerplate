@@ -11,7 +11,9 @@ custom:
     types:
       - '*/*'
   webpack:
-    webpackConfig: ./webpack.config.js      
+    webpackConfig: ./config/server/webpack.config.js
+  serverless-offline:
+    port: 8080
 
 provider:
   name: aws
@@ -21,7 +23,8 @@ provider:
 
 functions:
   function:
-    handler: src/server.handlerZZZ
+    handler: src/server.handler
+#    handler: www/service/src/server.handler
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'

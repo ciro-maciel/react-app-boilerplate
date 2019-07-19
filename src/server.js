@@ -6,6 +6,8 @@ const path = require('path'),
   compression = require('compression'),
   awsServerlessExpress = require('aws-serverless-express');
 
+import fs from 'fs';
+
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
 
 import React from 'react';
@@ -55,11 +57,6 @@ app.get('/event', (req, res) => {
 // https://expressjs.com/pt-br/starter/static-files.html
 app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
 
-// // https://stackoverflow.com/questions/49961731/react-router-4-and-express-cannot-get
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "../www", "index.html"));
-// });
-
 app.get('**', function(req, res) {
   const context = {};
 
@@ -69,15 +66,12 @@ app.get('**', function(req, res) {
     styleSheet.collectStyles(
       <StaticRouter location={req.url} context={context}>
         <Main />
-        {/* <div>
-            dsds
-          </div> */}
       </StaticRouter>
     )
   );
 
   const helmet = Helmet.renderStatic();
-  const styleTags = styleSheet.getStyleTags();
+  const style = styleSheet.getStyleTags();
 
   // let html = `
   //         <!doctype html>
@@ -97,23 +91,15 @@ app.get('**', function(req, res) {
   //             </body>
   //         </html>
   //     `;
-  let html = `
-      <!doctype html>
-      <html ${helmet.htmlAttributes.toString()}>
-          <head>
-              <meta charset="UTF-8">
-              ${helmet.title.toString()}
-              ${helmet.meta.toString()}
-              ${helmet.link.toString()}
-              ${styleTags}
-              <link rel="icon" type="image/ico" href="/assets/img/favicon.ico">
-              <script type="text/javascript" src="assets/js/manifest.js" charset="utf-8"></script>
-          </head>
-          <body ${helmet.bodyAttributes.toString()}>
-              <div id="container">${renderHtml}</div>
-          </body>
-      </html>
-  `;
+
+  let html = fs.readFileSync('./www/index.html', 'utf8');
+
+  html = html.replace('<!--title-->', helmet.title.toString());
+  html = html.replace('<!--meta-->', helmet.meta.toString());
+  html = html.replace('<!--link-->', helmet.link.toString());
+  html = html.replace('<!--style-->', style);
+
+  html = html.replace('<!--html-->', renderHtml);
 
   // context.url will contain the URL to redirect to if a <Redirect> was used
   if (context.url) {
@@ -128,12 +114,8 @@ app.get('**', function(req, res) {
   }
 });
 
-// export const handlerZZZ = serverless(app, {
-//   binary: ['text/html', 'image/*']
-// });
-
 const server = awsServerlessExpress.createServer(app, null, mimeTypes);
 
-export const handlerZZZ = function(event, context) {
+export const handler = function(event, context) {
   return awsServerlessExpress.proxy(server, event, context);
 };

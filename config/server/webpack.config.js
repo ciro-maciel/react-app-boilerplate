@@ -1,16 +1,21 @@
 const path = require('path');
 const slsw = require('serverless-webpack');
 const nodeExternals = require('webpack-node-externals');
+const CopyPlugin = require('copy-webpack-plugin');
+const DelWebpackPlugin = require('del-webpack-plugin')
+
 
 module.exports = {
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
   target: 'node',
+  // entry: './src/server.js',
   entry: slsw.lib.entries,
   output: {
     libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '.webpack'),
+    // path: path.resolve(__dirname, 'www', 'assets/js/'),
+    path: path.resolve(__dirname, '../../www'),
     filename: '[name].js',
-    sourceMapFilename: '[file].map',
+    // sourceMapFilename: '[file].map',
   },
   optimization: {
     // We no not want to minimize our code.
@@ -44,4 +49,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new CopyPlugin([{ from: 'src/index.html', to: '../index.html' }]),
+    // new DelWebpackPlugin({keepGeneratedAssets:false, allowExternal:true, include: ['**', '../../service/**']}),
+  ],
 };
+
+// ['.webpack/assets/js/service']
