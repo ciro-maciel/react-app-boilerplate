@@ -1,13 +1,5 @@
-import {
-    combineEpics
-} from 'redux-observable';
+import { combineEpics } from 'redux-observable';
 
+import { users } from '../containers/Users/epic';
 
-import {
-    users
-} from '../containers/Users/epic';
-
-
-export default combineEpics(
-    users
-)
+export default combineEpics(users);

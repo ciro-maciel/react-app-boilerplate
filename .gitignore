@@ -22,6 +22,8 @@ yarn-error.log*
 package-lock.json
 *.log
 .vscode/*
-public/assets/js/
+www/assets/js/
 public/worker.js
-public/index.html
+www/index.html
+www/analyzer.html
+

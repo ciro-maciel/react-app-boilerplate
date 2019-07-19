@@ -8,6 +8,7 @@ import pt_BR from './data/pt-BR';
 import en_US from './data/en-US';
 
 let dataMessages = {
+  'pt': pt_BR,
   'pt-BR': pt_BR,
   'en-US': en_US,
 };

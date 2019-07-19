@@ -1,10 +1,8 @@
-import {
-	I18n_CHANGE
-} from './types';
+import { I18n_CHANGE } from './types';
 
 export function i18nChange(locale) {
-	return {
-		type: I18n_CHANGE,
-		payload: locale
-	}
+  return {
+    type: I18n_CHANGE,
+    payload: locale,
+  };
 }

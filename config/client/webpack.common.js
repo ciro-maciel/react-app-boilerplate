@@ -13,13 +13,13 @@ const ImageminPlugin = require('imagemin-webpack'),
 module.exports = (mode) => {
   return {
     devtool: 'source-map',
-    mode: mode,
-    entry: './src/index.js',
+    mode: mode === "dev" ? "development" : "production",
+    entry: './src/client.js',
     output: {
       path: path.resolve(__dirname, '../../www', 'assets/js/'),
       filename: '[hash:12].js',
       // https://stackoverflow.com/questions/34620628/htmlwebpackplugin-injects-relative-path-files-which-breaks-when-loading-non-root
-      // publicPath: mode === 'development' ? '/' : '/assets/js/',
+      // publicPath: mode === 'dev' ? '/' : '/assets/js/',
       chunkFilename: '[chunkhash:12].js',
     },
     optimization: {
@@ -99,7 +99,7 @@ module.exports = (mode) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: 'src/index.html',
-        filename: mode === 'development' ? 'index.html' : '../../index.html',
+        filename: mode === 'dev' ? 'index.html' : '../../index.html',
         showErrors: true,
         chunksSortMode: 'dependency',
         minify: {

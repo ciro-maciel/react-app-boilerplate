@@ -1,15 +1,15 @@
-import React from "react";
-import { Switch, Route } from "react-router";
-import { Link } from "react-router-dom";
-import XRay from "react-x-ray";
+import React from 'react';
+import { Switch, Route } from 'react-router';
+import { Link } from 'react-router-dom';
+import XRay from 'react-x-ray';
 
-import { Flex, Box } from "rebass";
+import { Flex, Box } from 'rebass';
 
-import { I18nProvider } from "../containers/i18n";
-import Home from "../containers/Home";
-import Users from "../containers/Users";
+import { I18nProvider } from '../containers/i18n';
+import Home from '../containers/Home';
+import Users from '../containers/Users';
 
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 	html,
@@ -40,12 +40,12 @@ const Status = ({ code, children }) => (
 
 const NotFound = () => (
   <Status code={404}>
-    <Flex justify="center" style={{ height: "100%" }}>
+    <Flex justifyContent="center" alignItems="center" style={{ height: '100%' }}>
       <Flex wrap width={1024}>
-        <Box width={1} style={{ textAlign: "center" }}>
+        <Box width={1} style={{ textAlign: 'center' }}>
           <h1>Sorry, can’t find that.</h1>
           <p>
-            Go to <Link to={"/"}>Home</Link>
+            Go to <Link to={'/'}>Home</Link>
           </p>
         </Box>
       </Flex>
@@ -57,11 +57,7 @@ const RoutesSwitch = () => (
   <Switch>
     <Route exact path="/" component={Home} />
     <Route exact path="/users" component={Users} />
-    <Route
-      exact
-      path="/repository/:repositoryName"
-      render={() => <div>{props.match.params.repositoryName}</div>}
-    />
+    <Route exact path="/repository/:repositoryName" render={() => <div>{props.match.params.repositoryName}</div>} />
     <Route component={NotFound} />
   </Switch>
 );
@@ -70,14 +66,9 @@ const Routes = () => (
   <I18nProvider>
     <React.Fragment>
       <GlobalStyle />
-        <XRay
-          disabled={false}
-          color={"#e5a87d"}
-          backgroundColor={"#004d84"}
-          style={{ height: "100%" }}
-        >
-          <RoutesSwitch />
-        </XRay>
+      <XRay disabled={false} color={'#e5a87d'} backgroundColor={'#004d84'} style={{ height: '100%' }}>
+        <RoutesSwitch />
+      </XRay>
     </React.Fragment>
   </I18nProvider>
 );

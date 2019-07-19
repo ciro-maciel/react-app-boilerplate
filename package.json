@@ -10,8 +10,8 @@
     "email": "ciro.maciel@c37.co"
   },
   "scripts": {
-    "dev:client:dev": "webpack-dev-server --config ./config/client/dev/webpack.config.js",
-    "dev:client:prod": "webpack --env production --config ./config/client/prod/webpack.config.js",
+    "dev:client:dev": "webpack-dev-server --env dev --config ./config/client/dev/webpack.config.js",
+    "dev:client:prod": "webpack --env prod --config ./config/client/prod/webpack.config.js",
     "dev:server": "node --inspect ./node_modules/.bin/serverless offline",
     "test:client": "jest",
     "test:server": "jest",
