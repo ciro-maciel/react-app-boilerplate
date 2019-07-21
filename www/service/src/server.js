@@ -1403,7 +1403,7 @@ if (true) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handler", function() { return handler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handler", function() { return handler; });
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fs */ "fs");
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
@@ -1450,7 +1450,7 @@ app.get('/event', function (req, res) {
 });
 
 // https://expressjs.com/pt-br/starter/static-files.html
-app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
+app.use('/assets', express.static('./www/assets'));
 
 app.get('**', function (req, res) {
   var context = {};
@@ -1465,25 +1465,6 @@ app.get('**', function (req, res) {
 
   var helmet = react_helmet__WEBPACK_IMPORTED_MODULE_5___default.a.renderStatic();
   var style = styleSheet.getStyleTags();
-
-  // let html = `
-  //         <!doctype html>
-  //         <html ${helmet.htmlAttributes.toString()}>
-  //             <head>
-  //                 <meta charset="UTF-8">
-  //                 ${helmet.title.toString()}
-  //                 ${helmet.meta.toString()}
-  //                 ${helmet.link.toString()}
-  //                 ${styleTags}
-  //                 <link rel="icon" type="image/ico" href="/assets/img/favicon.ico">
-  //                 <script type="text/javascript" src="assets/js/manifest.js" charset="utf-8"></script>
-  //             </head>
-  //             <body ${helmet.bodyAttributes.toString()}>
-  //                 <div id="container">${renderHtml}</div>
-  //                 <script type="text/javascript" src="/assets/js/main.js" charset="utf-8"></script>
-  //             </body>
-  //         </html>
-  //     `;
 
   var html = fs__WEBPACK_IMPORTED_MODULE_0___default.a.readFileSync('./www/index.html', 'utf8');
 
@@ -1512,7 +1493,6 @@ var server = awsServerlessExpress.createServer(app, null, mimeTypes);
 var handler = function handler(event, context) {
   return awsServerlessExpress.proxy(server, event, context);
 };
-/* WEBPACK VAR INJECTION */}.call(this, "/"))
 
 /***/ }),
 

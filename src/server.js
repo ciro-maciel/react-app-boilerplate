@@ -55,7 +55,7 @@ app.get('/event', (req, res) => {
 });
 
 // https://expressjs.com/pt-br/starter/static-files.html
-app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
+app.use('/assets', express.static('./www/assets'));
 
 app.get('**', function(req, res) {
   const context = {};
@@ -72,25 +72,6 @@ app.get('**', function(req, res) {
 
   const helmet = Helmet.renderStatic();
   const style = styleSheet.getStyleTags();
-
-  // let html = `
-  //         <!doctype html>
-  //         <html ${helmet.htmlAttributes.toString()}>
-  //             <head>
-  //                 <meta charset="UTF-8">
-  //                 ${helmet.title.toString()}
-  //                 ${helmet.meta.toString()}
-  //                 ${helmet.link.toString()}
-  //                 ${styleTags}
-  //                 <link rel="icon" type="image/ico" href="/assets/img/favicon.ico">
-  //                 <script type="text/javascript" src="assets/js/manifest.js" charset="utf-8"></script>
-  //             </head>
-  //             <body ${helmet.bodyAttributes.toString()}>
-  //                 <div id="container">${renderHtml}</div>
-  //                 <script type="text/javascript" src="/assets/js/main.js" charset="utf-8"></script>
-  //             </body>
-  //         </html>
-  //     `;
 
   let html = fs.readFileSync('./www/index.html', 'utf8');
 

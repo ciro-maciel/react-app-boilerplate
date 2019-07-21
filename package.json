@@ -12,7 +12,7 @@
   "scripts": {
     "dev:client:dev": "webpack-dev-server --env dev --config ./config/client/dev/webpack.config.js",
     "dev:client:prod": "webpack --env prod --config ./config/client/prod/webpack.config.js",
-    "dev:server": "node --inspect ./node_modules/.bin/serverless offline",
+    "dev:server": "node --inspect ./node_modules/.bin/serverless offline & sleep 10 && npm run dev:client:prod",
     "test:client": "jest",
     "test:server": "jest",
     "deploy:dev": "serverless deploy --stage dev",
