@@ -10,14 +10,18 @@
     "email": "ciro.maciel@c37.co"
   },
   "scripts": {
-    "dev:client:dev": "webpack-dev-server --env dev --config ./config/client/dev/webpack.config.js",
-    "dev:client:prod": "webpack --env prod --config ./config/client/prod/webpack.config.js",
-    "dev:server": "node --inspect ./node_modules/.bin/serverless offline & sleep 10 && npm run dev:client:prod",
-    "test:client": "jest",
-    "test:server": "jest",
-    "deploy:dev": "serverless deploy --stage dev",
+    "client:dev": "webpack-dev-server --env dev --config ./config/client/dev/webpack.config.js",
+    "client:test": "jest",
+    "client:build": "webpack --env prod --config ./config/client/prod/webpack.config.js",
+
+    "server:dev": "webpack --env prod --config ./config/client/prod/webpack.config.js && serverless offline",
+    "server:debug": "node --inspect ./node_modules/.bin/serverless offline",
+    "server:test": "jest",
+
+    "deploy:dev": "webpack --env prod --config ./config/client/prod/webpack.config.js && serverless deploy --stage dev",
     "deploy:hml": "serverless deploy --stage dev",
     "deploy:prod": "serverless deploy --stage dev",
+
     "remove:dev": "serverless remove --stage dev",
     "remove:hml": "serverless remove --stage dev",
     "remove:prod": "serverless remove --stage dev"
@@ -50,8 +54,6 @@
     "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "compression-webpack-plugin": "^1.0.0",
-    "copy-webpack-plugin": "^5.0.3",
-    "del-webpack-plugin": "^1.2.0",
     "dotenv-webpack": "^1.5.4",
     "html-webpack-plugin": "^3.2.0",
     "imagemin-mozjpeg": "^8.0.0",

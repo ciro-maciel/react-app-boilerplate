@@ -1,4 +1,4 @@
-service: sorrir-viver-account
+service: lean-react
 
 plugins:
   - serverless-apigw-binary
@@ -24,7 +24,6 @@ provider:
 functions:
   function:
     handler: src/server.handler
-#    handler: www/service/src/server.handler
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
