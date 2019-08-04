@@ -16,7 +16,7 @@ custom:
     port: 8080
   includeDependencies:
     always:
-      - 'www/**'    
+      - 'www/**'
 
 provider:
   name: aws
