@@ -1,7 +1,9 @@
 ## React/Preact - Template
 My version of React/Preact Application Template with:
 
+<div style="float:right">
 [![Build Status](http://ci.rili.be:80/buildStatus/icon?job=rili-lean-react%2Fdev)](http://ci.rili.be:80/job/rili-lean-react/job/dev/)
+</div>
 
 |                                 |                             |                       |
 |---------------------------------|-----------------------------|-----------------------|
